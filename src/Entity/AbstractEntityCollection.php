@@ -9,17 +9,16 @@ use App\Mapper\AbstractMapper;
 abstract class AbstractEntityCollection implements \Iterator
 {
     protected $mapper;
-    protected $total = 0;
+    protected $totalRowsCount = 0;
     protected $raw = [];
 
-    private $result;
     private $pointer = 0;
     private $objects = [];
 
     public function __construct(array $raw = [], AbstractMapper $mapper = null) {
         if ($raw !== [] && !is_null($mapper)) {
             $this->raw = $raw;
-            $this->total = count($raw);
+            $this->totalRowsCount = count($raw);
         }
 
         $this->mapper = $mapper;
@@ -33,8 +32,8 @@ abstract class AbstractEntityCollection implements \Iterator
         }
 
         $this->notifyAccess();
-        $this->objects[$this->total] = $entity;
-        $this->total++;
+        $this->objects[$this->totalRowsCount] = $entity;
+        $this->totalRowsCount++;
     }
 
     abstract public function targetClass();
@@ -48,7 +47,7 @@ abstract class AbstractEntityCollection implements \Iterator
     {
         $this->notifyAccess();
         
-        if ($num >= $this->total || $num < 0) {
+        if ($num >= $this->totalRowsCount || $num < 0) {
             return null;
         }
 

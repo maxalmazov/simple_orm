@@ -8,16 +8,11 @@ use App\Controller\ControllerInterface;
 
 class ControllerResolver
 {
-
-    public function __construct() {
-    
-    }
-
     public function getController(MatchedRoute $matchedRoute)
     {
         $controllerName = $matchedRoute->getController();
         
-        $controller = new $controllerName;
+        $controller = new $controllerName();
         if ($controller instanceof ControllerInterface) {
             return $controller;
         }

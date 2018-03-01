@@ -49,7 +49,7 @@ class Application
     /**
      * @param mixed $request
      */
-    private function setRequest($request): void
+    private function setRequest(Request $request): void
     {
         $this->request = $request;
     }
@@ -83,5 +83,18 @@ class Application
         $this->connection = DatabaseConnection::getInstance();
     }
 
-    
+    public function getMapper($class)
+    {
+        $mapper = $this->parseClass($class);
+
+        return new $mapper;
+    }
+
+    private function parseClass($class)
+    {
+        $num = strrpos($class, '\\')+1;
+        $class = substr($class, $num);
+
+        return sprintf('App\Mapper\%sMapper', $class);
+    }
 }

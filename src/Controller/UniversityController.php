@@ -2,21 +2,25 @@
 
 namespace App\Controller;
 
+use App\Application;
+use App\Entity\University;
 use App\Request\Request;
+use App\ORM\Manager\EntityManager;
 
 class UniversityController extends AbstractController
 {
     public function indexAction(Request $request)
     {
-        $em = $this->getEntityManager();
-        $university = $this->mapper->findAll();
+
+        $mapper = Application::instance()->getMapper(University::class);
+        $university = $mapper->findAll();
 
         include __DIR__ . '/../view/main.php';
     }
 
     public function addAction(Request $request)
     {
-        $em = $this->getEntityManager();
+        $em = EntityManager::instance();
         if ($request->isPost()) { //TODO: isFormSubmit() && isValid()
             $university = $this->mapper->doCreateObject($request->getPostVar());
             $em->persist($university);
@@ -29,8 +33,9 @@ class UniversityController extends AbstractController
 
     public function editAction(Request $request)
     {
-        $em = $this->getEntityManager();
-        $university = $this->mapper->find($request->getUriParams()[2]);
+        $em = EntityManager::instance();
+        $mapper = $em->getMapper(University::class);
+        $university = $mapper->find($request->getUriParams()[2]);
         if ($request->isPost()) { //TODO: isFormSubmit() && isValid()
             $university->setName($request->getPostVar()['name']); //TODO тут иначе сделать
             $university->setCity($request->getPostVar()['city']); //TODO тут иначе сделать

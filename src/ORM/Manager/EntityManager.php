@@ -53,11 +53,8 @@ class EntityManager
     public function exist(AbstractEntity $entity)
     {
         $inst = self::instance();
-        if (isset($inst->identityMap[$this->getEntityIdentifier($entity)]) ) {
-            return true;
-        }
 
-        return false;
+        return isset($inst->identityMap[$this->getEntityIdentifier($entity)]);
     }
 
     public function flush()

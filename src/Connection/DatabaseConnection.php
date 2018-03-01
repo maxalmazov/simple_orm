@@ -45,13 +45,13 @@ class DatabaseConnection
     {
 //        TODO: make from file
 
-        $envVars = array(
+        $envVars = [
           'db_type' => 'mysql',
           'db_host' => 'localhost',
           'db_name' => 'react',
           'db_user' => 'root',
           'db_password' => 'root',
-        );
+        ];
 
         return $envVars;
     }
