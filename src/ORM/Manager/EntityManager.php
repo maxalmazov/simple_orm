@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\ORM\Manager;
 
 use App\Application;
@@ -19,11 +21,6 @@ class EntityManager
     private $entityInsertions = [];
     private $entityUpdates = [];
     private $entityDeletions = [];
-
-    private function __construct()
-    {
-
-    }
 
     public static function instance()
     {

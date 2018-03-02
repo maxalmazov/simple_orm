@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Routing;
 
 use App\Routing\UrlMatcher;
@@ -18,7 +20,7 @@ class Router
         $this->getRoutes();
     }
 
-    public function add($name, $pattern, $controller, $method = [])
+    public function add(string $name, string $pattern, string $controller, string $method)
     {
         $this->routes[$name] = array(
           'pattern' => $pattern,
@@ -41,7 +43,7 @@ class Router
      * @param $uri
      * @return MatchedRoute
      */
-    public function match($method, $uri)
+    public function match(string $method, string $uri)
     {
         return $this->getMatcher()->match($method, $uri);
     }
@@ -60,7 +62,7 @@ class Router
         return $this->matcher;
     }
 
-    public function generate($name, array $parameters = array(), $absolute = false)
+    public function generate(string $name, array $parameters = array(), $absolute = false)
     {
         return $this->getGenerator()->generate($name, $parameters, $absolute);
     }

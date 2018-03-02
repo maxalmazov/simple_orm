@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Mapper;
 
 use App\Entity\University;
@@ -8,10 +10,6 @@ use App\Mapper\AbstractMapper;
 
 class UniversityMapper extends AbstractMapper
 {
-    public function __construct() {
-        parent::__construct();
-    }
-
     public function getCollection()
     {
         //TODO

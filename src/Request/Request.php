@@ -100,7 +100,7 @@ class Request
         return isset($this->data[$name]) ? $this->data[$name] : null;
     }
 
-    public function has($name)
+    public function has(string $name)
     {
         return $this->get($name) != null;
     }

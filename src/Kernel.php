@@ -13,11 +13,6 @@ class Kernel
      */
     private $application;
 
-    private function __construct()
-    {
-
-    }
-
     public static function run()
     {
         $instance = new Kernel();

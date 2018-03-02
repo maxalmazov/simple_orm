@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\ORM\Relationship;
 
 class Relationships
@@ -10,6 +12,6 @@ class Relationships
 
     public function __construct()
     {
-
+        //TODO
     }
 }

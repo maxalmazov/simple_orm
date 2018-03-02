@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use App\ORM\Table\Table;
@@ -13,9 +15,6 @@ class Faculty extends AbstractEntity
     private $university;
 
     private static $tableInstance;
-
-    public function __construct() {
-    }
 
     /**
      * @return mixed
