@@ -20,7 +20,7 @@ abstract class AbstractMapper
         $this->_queryBuilder = new QueryBuilder($this->_conn);
     }
 
-    public function find($id)
+    public function find(int $id)
     {
         $object = $this->getFormMap($id);
         if (!is_null($object)) {
@@ -42,7 +42,7 @@ abstract class AbstractMapper
         return $object;
     }
 
-    public function createObject($array) //TODO это функционал вынести на отдельный класс Factory нужно
+    public function createObject(array $array) //TODO это функционал вынести на отдельный класс Factory нужно
     {
         $object = $this->getFormMap($array['id']);
         if (!is_null($object)) {
@@ -53,7 +53,7 @@ abstract class AbstractMapper
         return $object;
     }
     
-    private function getFormMap($id)
+    private function getFormMap(int $id)
     {
         return $this->_em->isInIdentityMap($id, $this->targetClass()) ? : null;
     }
@@ -67,7 +67,7 @@ abstract class AbstractMapper
     abstract public function update(AbstractEntity $entity);
     abstract public function delete(AbstractEntity $entity);
     abstract public function doCreateObject(array $obj);
-    abstract public function select($id);
+    abstract public function select(int $id);
     abstract public function selectAll();
     abstract public function targetClass();
 }

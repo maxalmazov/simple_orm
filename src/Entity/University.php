@@ -31,7 +31,7 @@ class University extends AbstractEntity implements EntityInterface
         return __CLASS__;
     }
     
-    public function get($field)
+    public function get(string $field)
     {
         return $this->{'get'.ucfirst($field)}();
     }
@@ -46,7 +46,7 @@ class University extends AbstractEntity implements EntityInterface
     /**
      * @param mixed $id
      */
-    public function setId($id): void {
+    public function setId(int $id): void {
         $this->id = $id;
     }
 
@@ -60,7 +60,7 @@ class University extends AbstractEntity implements EntityInterface
     /**
      * @param mixed $name
      */
-    public function setName($name): void {
+    public function setName(string $name): void {
         $this->name = $name;
     }
 
@@ -74,7 +74,7 @@ class University extends AbstractEntity implements EntityInterface
     /**
      * @param mixed $city
      */
-    public function setCity($city): void {
+    public function setCity(string $city): void {
         $this->city = $city;
     }
 

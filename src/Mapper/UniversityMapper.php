@@ -63,7 +63,7 @@ class UniversityMapper extends AbstractMapper
         $builder->execute();
     }
 
-    public function select($id)
+    public function select(int $id)
     {
         $table = $this->targetClass()::TABLE;
         $builder = $this->_queryBuilder;

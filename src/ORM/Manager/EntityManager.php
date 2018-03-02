@@ -45,7 +45,7 @@ class EntityManager
         self::instance()->entityIdentifiers[get_class($entity)][$entity->getId()] = $entity;
     }
 
-    public function isInIdentityMap($id, $className)
+    public function isInIdentityMap(int $id, string $className)
     {
         return isset($this->identityMap[$className][$id]) ? $this->identityMap[$className][$id] : false;
     }
@@ -124,24 +124,24 @@ class EntityManager
         $this->entityDeletions             = [];
     }
 
-    private function executeInserts($entityInsertion)
+    private function executeInserts(AbstractEntity $entityInsertion)
     {
         $mapper = $this->getMapper(get_class($entityInsertion));
         $mapper->insert($entityInsertion);
     }
 
-    private function executeUpdates($entityUpdate)
+    private function executeUpdates(AbstractEntity $entityUpdate)
     {
         $mapper = $this->getMapper(get_class($entityUpdate));
         $mapper->update($entityUpdate);
     }
 
-    private function executeDeletions($entityDeletion)
+    private function executeDeletions(AbstractEntity $entityDeletion)
     {
         //TODO
     }
     
-    public function getMapper($entity)
+    public function getMapper(string $entity)
     {
         $num = strrpos($entity, '\\')+1;
         $class = substr($entity, $num);

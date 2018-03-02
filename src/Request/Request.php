@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Request;
 
 use App\Application;
@@ -30,7 +32,7 @@ class Request
         return $this->get('REQUEST_METHOD') == 'POST';
     }
 
-    public function isMethod($method)
+    public function isMethod(string $method)
     {
         return $this->getMethod() == strtoupper($method);
     }
@@ -93,7 +95,7 @@ class Request
         return $this->pathInfo = $pathInfo;
     }
 
-    public function get($name)
+    public function get(string $name)
     {
         return isset($this->data[$name]) ? $this->data[$name] : null;
     }
@@ -113,7 +115,8 @@ class Request
     /**
      * @return array
      */
-    public function getPostVar(): array {
+    public function getPostVar(): array
+    {
         return $this->postVar;
     }
 
@@ -127,11 +130,12 @@ class Request
     /**
      * @return array
      */
-    public function getGetVar(): array {
+    public function getGetVar(): array
+    {
         return $this->getVar;
     }
     
-    public function redirectToRoute($name)
+    public function redirectToRoute(string $name)
     {
         $url = Application::instance()->getRouter()->generate($name);
         

@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 abstract class AbstractEntity implements EntityInterface
 {
-    static function getCollection($class)
+    static function getCollection(string $class)
     {
         return 0;
     }

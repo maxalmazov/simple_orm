@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App;
 
 use App\Connection\DatabaseConnection;
@@ -65,7 +67,7 @@ class Application
     /**
      * @param mixed $router
      */
-    private function setRouter($router): void
+    private function setRouter(Router $router): void
     {
         $this->router = $router;
     }
@@ -90,7 +92,7 @@ class Application
         return new $mapper;
     }
 
-    private function parseClass($class)
+    private function parseClass(string $class)
     {
         $num = strrpos($class, '\\')+1;
         $class = substr($class, $num);

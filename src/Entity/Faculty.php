@@ -34,7 +34,7 @@ class Faculty extends AbstractEntity
     /**
      * @param mixed $name
      */
-    public function setName($name): void {
+    public function setName(string $name): void {
         $this->name = $name;
     }
 
@@ -48,7 +48,7 @@ class Faculty extends AbstractEntity
     /**
      * @param mixed $university
      */
-    public function setUniversity($university): void {
+    public function setUniversity(University $university): void {
         $this->university = $university;
     }
 

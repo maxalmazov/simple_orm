@@ -43,7 +43,7 @@ abstract class AbstractEntityCollection implements \Iterator
 //    TODO Lazy Load pattern see
     }
 
-    private function getRow($num)
+    private function getRow(int $num)
     {
         $this->notifyAccess();
         

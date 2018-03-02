@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace App\Connection;
 
 class DatabaseConnection
@@ -56,14 +58,14 @@ class DatabaseConnection
         return $envVars;
     }
 
-    public function executeUpdate($query, $params)
+    public function executeUpdate(string $query, array $params)
     {
         $pdo = $this->connection;
         $pdoStmt = $pdo->prepare($query);
         $lol = $pdoStmt->execute($params);
     }
 
-    public function executeQuery($query, $params)
+    public function executeQuery(string $query, array $params)
     {
         $pdo = $this->connection;
         $pdoStmt = $pdo->prepare($query);

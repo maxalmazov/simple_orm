@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App;
+
 use App\Request\Request;
 use App\Routing\MatchedRoute;
 use App\Controller\ControllerInterface;
-
 
 class ControllerResolver
 {

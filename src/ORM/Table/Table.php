@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 namespace App\ORM\Table;
 
 class Table
@@ -6,7 +9,7 @@ class Table
     private $tableName;
     private $columns = [];
     
-    public function __construct($tableName, $columns) {
+    public function __construct(string $tableName, array $columns) {
         $this->tableName = $tableName;
         
         foreach ($columns as $column => $value) {
@@ -19,7 +22,7 @@ class Table
         return $this->tableName;
     }
 
-    public function getColumn($name)
+    public function getColumn(string $name)
     {
         return $this->columns[$name];
     }
